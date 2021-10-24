@@ -14,8 +14,7 @@ Config.subtitle = 'unitedfreedomgaming.com' -- Leave blank if you don't want a s
 
 ------------------------------------------------------------------------------------------------
 
-Config.cash_text = 'Cash: %s$'
-Config.bank_text = 'Bank: %s$'
-Config.crypto_text = 'Crypto: %s'
+Config.cash_text = 'Cash: $%s'
+Config.bank_text = 'Bank: $%s'
 
 ------------------------------------------------------------------------------------------------
