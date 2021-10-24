@@ -1,30 +1,27 @@
-ESX = nil
-local PlayerData = {}
-local money = {bank = 0, money = 0}
-local PlayerCharacterName = nil
+------------------------------------------------------------------------------------------------
 
-Citizen.CreateThread(function()
-    while ESX == nil do
-        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-        Citizen.Wait(0)
-    end
-end)
+QBCore = exports['qb-core']:GetCoreObject()
 
-RegisterNetEvent('esx:playerLoaded')
-AddEventHandler('esx:playerLoaded', function(xPlayer)
-    PlayerData = xPlayer
+local PlayerName = nil
+local cashAmount = 0
+local bankAmount = 0
 
-    ESX.TriggerServerCallback('chicle_pause_menu:getPlayerMoney', function(cb)
-        money.money = cb.money
-        money.bank = cb.bank
+------------------------------------------------------------------------------------------------
+
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded')
+AddEventHandler("QBCore:Client:OnPlayerLoaded",function()
+    QBCore.Functions.GetPlayerData(function(PlayerData)
+        cashAmount = PlayerData.money['cash']
+        bankAmount = PlayerData.money['bank']
     end)
-
-    ESX.TriggerServerCallback('chicle_pause_menu:getPlayerName', function(cb) PlayerCharacterName = cb end)
+    QBCore.Functions.TriggerCallback('chicle_pause_menu:getPlayerName', function(cb) PlayeName = cb end)
 
 end)
 
+------------------------------------------------------------------------------------------------
+
 Citizen.CreateThread(function()
-    local IsPauseMenu = false -- This is just to check if you just opened the pause menu
+    local IsPauseMenu = false
 
     while true do
         Wait(0)
@@ -32,14 +29,14 @@ Citizen.CreateThread(function()
         if IsPauseMenuActive() then
             if not isPauseMenu then
                 isPauseMenu = true
-                ESX.TriggerServerCallback('chicle_pause_menu:getPlayerMoney', function(cb)
-                    money.money = cb.money
-                    money.bank = cb.bank
+                QBCore.Functions.GetPlayerData(function(PlayerData)
+                    cashAmount = PlayerData.money['cash']
+                    bankAmount = PlayerData.money['bank']
                 end)
 
-                if PlayerCharacterName == nil then
-                    ESX.TriggerServerCallback('chicle_pause_menu:getPlayerName', function(cb)
-                        PlayerCharacterName = cb
+                if PlayerName == nil then
+                    QBCore.Functions.TriggerCallback('chicle_pause_menu:getPlayerName', function(cb)
+                        PlayerName = cb
                     end)
                 end
             end
@@ -61,19 +58,21 @@ Citizen.CreateThread(function()
               PopScaleformMovieFunctionVoid()
 
               BeginScaleformMovieMethodOnFrontendHeader("SET_HEADING_DETAILS")
-              PushScaleformMovieFunctionParameterString(PlayerCharacterName) -- Nombre del jugador
-              PushScaleformMovieFunctionParameterString((Config.cash_text):format(money.money)) -- Dia y hora
-              PushScaleformMovieFunctionParameterString((Config.bank_text):format(money.bank)) -- Dinero en banco y efectivo
+              PushScaleformMovieFunctionParameterString(PlayerName)
+              PushScaleformMovieFunctionParameterString((Config.cash_text):format(cashAmount))
+              PushScaleformMovieFunctionParameterString((Config.bank_text):format(bankAmount))
               ScaleformMovieMethodAddParamBool(false)
               ScaleformMovieMethodAddParamBool(isScripted)
-              EndScaleformMovieMethod()
-
+              EndScaleformMovieMethod() 
+              
         else
-          if isPauseMenu then
-            isPauseMenu = false
-          end
+            if isPauseMenu then
+                isPauseMenu = false
+            end
         end
-
+    
     end
 
 end)
+
+------------------------------------------------------------------------------------------------
