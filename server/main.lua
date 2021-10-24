@@ -1,13 +1,20 @@
-local ESX = nil
-TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+------------------------------------------------------------------------------------------------
 
-ESX.RegisterServerCallback('chicle_pause_menu:getPlayerName', function(source,cb) 
-  local xPlayer = ESX.GetPlayerFromId(source)
-  cb(xPlayer.getName())
+QBCore = exports['qb-core']:GetCoreObject()
+
+------------------------------------------------------------------------------------------------
+
+QBCore.Functions.CreateCallback('chicle_pause_menu:getPlayerName', function(source,cb)
+    local Player = QBCore.Functions.GetPlayer(source)
+    local PlayerName = cb(Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname)
 end)
 
-ESX.RegisterServerCallback('chicle_pause_menu:getPlayerMoney', function(source,cb) 
-  local xPlayer = ESX.GetPlayerFromId(source)
+------------------------------------------------------------------------------------------------
 
-  cb( { money = xPlayer.getAccount('money').money, bank = xPlayer.getAccount('bank').money } )
+QBCore.Functions.CreateCallback('chicle_pause_menu:getPlayerMoney', function(source,cb)
+    PlayerData = QBCore.Functions.GetPlayerData()
+
+    cb( { cash = Player.PlayerData.money['cash'], bank = Player.PlayerData.money['bank'], crypto = Player.PlayerData.money['crypto'] } )
 end)
+
+------------------------------------------------------------------------------------------------
