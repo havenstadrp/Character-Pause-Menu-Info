@@ -5,16 +5,16 @@ Config = {}
 ------------------------------------------------------------------------------------------------
 
 -- Title [Example: Your RP Server Name]
-Config.title = 'United Freedom'
+Config.title = 'Havenstad RP'
 
 ------------------------------------------------------------------------------------------------
 
 -- Subtitle [Example: Your RP Server Website]
-Config.subtitle = 'unitedfreedomgaming.com' -- Leave blank if you don't want a subtitle.
+Config.subtitle = 'havenstadrp.be' -- Leave blank if you don't want a subtitle.
 
 ------------------------------------------------------------------------------------------------
 
-Config.cash_text = 'Cash: $%s'
-Config.bank_text = 'Bank: $%s'
+Config.cash_text = 'Geld: € %s'
+Config.bank_text = 'Bank: € %s'
 
 ------------------------------------------------------------------------------------------------
