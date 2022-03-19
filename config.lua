@@ -5,16 +5,17 @@ Config = {}
 ------------------------------------------------------------------------------------------------
 
 -- Title [Example: Your RP Server Name]
-Config.title = 'United Freedom'
+Config.title = 'Catch22'
 
 ------------------------------------------------------------------------------------------------
 
 -- Subtitle [Example: Your RP Server Website]
-Config.subtitle = 'unitedfreedomgaming.com' -- Leave blank if you don't want a subtitle.
+Config.subtitle = 'status.c22.com.au/status' -- Leave blank if you don't want a subtitle.
 
 ------------------------------------------------------------------------------------------------
 
 Config.cash_text = 'Cash: $%s'
 Config.bank_text = 'Bank: $%s'
+Config.job_text = 'Job: $%s'
 
 ------------------------------------------------------------------------------------------------
