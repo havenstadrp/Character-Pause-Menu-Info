@@ -5,12 +5,12 @@ Config = {}
 ------------------------------------------------------------------------------------------------
 
 -- Title [Example: Your RP Server Name]
-Config.title = 'Catch22'
+Config.title = 'Fill in'
 
 ------------------------------------------------------------------------------------------------
 
 -- Subtitle [Example: Your RP Server Website]
-Config.subtitle = 'status.c22.com.au/status' -- Leave blank if you don't want a subtitle.
+Config.subtitle = 'Fill In' -- Leave blank if you don't want a subtitle.
 
 ------------------------------------------------------------------------------------------------
 
