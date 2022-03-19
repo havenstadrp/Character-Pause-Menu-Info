@@ -13,9 +13,9 @@ PlayerJob = {}
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded')
 AddEventHandler("QBCore:Client:OnPlayerLoaded",function()
     QBCore.Functions.GetPlayerData(function(PlayerData)
-        cashAmount = PlayerData.money['cash']
+        cashAmount = math.floor(PlayerData.money['cash'])
         --bankAmount = PlayerData.money['bank']
-        PlayerJob = PlayerData.job
+        jobName = PlayerData.job.label
     end)
     QBCore.Functions.TriggerCallback('chicle_pause_menu:getPlayerName', function(cb) PlayerName = cb end)
 
@@ -33,9 +33,9 @@ Citizen.CreateThread(function()
             if not isPauseMenu then
                 isPauseMenu = true
                 QBCore.Functions.GetPlayerData(function(PlayerData)
-                    cashAmount = PlayerData.money['cash']
+                    cashAmount = math.floor(PlayerData.money['cash'])
                     --bankAmount = PlayerData.money['bank']
-                    PlayerJob = PlayerData.job
+                    jobName = PlayerData.job.label
                 end)
 
                 if PlayerName == nil then
@@ -64,7 +64,7 @@ Citizen.CreateThread(function()
               BeginScaleformMovieMethodOnFrontendHeader("SET_HEADING_DETAILS")
               PushScaleformMovieFunctionParameterString(PlayerName)
               PushScaleformMovieFunctionParameterString((Config.cash_text):format(cashAmount))
-              PushScaleformMovieFunctionParameterString((Config.job_text):format(PlayerJob.Name))
+              PushScaleformMovieFunctionParameterString((Config.job_text):format(jobName))
               ScaleformMovieMethodAddParamBool(false)
               ScaleformMovieMethodAddParamBool(isScripted)
               EndScaleformMovieMethod() 

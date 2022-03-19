@@ -15,7 +15,7 @@ Config.subtitle = 'status.c22.com.au/status' -- Leave blank if you don't want a 
 ------------------------------------------------------------------------------------------------
 
 Config.cash_text = 'Cash: $%s'
-Config.bank_text = 'Bank: $%s'
-Config.job_text = 'Job: $%s'
+--Config.bank_text = 'Bank: $%s'
+Config.job_text = 'Job: %s'
 
 ------------------------------------------------------------------------------------------------
