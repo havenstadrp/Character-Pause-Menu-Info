@@ -15,6 +15,6 @@ Config.subtitle = 'havenstadrp.be' -- Leave blank if you don't want a subtitle.
 ------------------------------------------------------------------------------------------------
 
 Config.cash_text = 'Geld: € %s'
-Config.bank_text = 'Bank: € %s'
+Config.job_text = 'Job: %s'
 
 ------------------------------------------------------------------------------------------------

@@ -12,10 +12,10 @@ end)
 
 ------------------------------------------------------------------------------------------------
 
-QBCore.Functions.CreateCallback('chicle_pause_menu:getPlayerMoney', function(source,cb)
-    PlayerData = QBCore.Functions.GetPlayerData()
+-- QBCore.Functions.CreateCallback('chicle_pause_menu:getPlayerMoney', function(source,cb)
+--     PlayerData = QBCore.Functions.GetPlayerData()
 
-    cb( { cash = Player.PlayerData.money['cash'], bank = Player.PlayerData.money['bank'] } )
-end)
+--     cb( { cash = Player.PlayerData.money['cash'], bank = Player.PlayerData.money['bank'] } )
+-- end)
 
 ------------------------------------------------------------------------------------------------
